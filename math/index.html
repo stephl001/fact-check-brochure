@@ -243,9 +243,9 @@
     <div class="formula-grid">
       <div class="formula-card">
         <h3>Crédibilité lissée (Bayes)</h3>
-        <p class="desc">Chaque preuve <span style="font-family:var(--mono)">e</span> reçoit un score de crédibilité borné, lissé pour éviter qu'une poignée de votes précoces ne domine.</p>
-        <div class="formula-box">C(e) <span class="op">=</span> <span class="k">Σ</span><sub>v∈V(e)</sub> w(v)&middot;s(v) <span class="op">/</span> (<span class="k">Σ</span><sub>v∈V(e)</sub> w(v) <span class="op">+</span> κ)</div>
-        <div class="formula-note">κ — constante de lissage · s(v) ∈ {+1, −1} selon le vote</div>
+        <p class="desc">Chaque preuve <span style="font-family:var(--mono)">e</span> reçoit un score de crédibilité borné dans [0,1], lissé vers un a priori de 0,5 pour éviter qu'une poignée de votes précoces ne domine.</p>
+        <div class="formula-box">C(e) <span class="op">=</span> ( <span class="k">Σ</span><sub>v∈solide(e)</sub> w(v) <span class="op">+</span> 0,5&middot;κ ) <span class="op">/</span> ( <span class="k">Σ</span><sub>v∈V(e)</sub> w(v) <span class="op">+</span> κ )</div>
+        <div class="formula-note">κ — constante de lissage (pseudo-comptage) · sans vote, C(e) = 0,5</div>
       </div>
       <div class="formula-card">
         <h3>Plafond anti-baleine</h3>
